@@ -27,7 +27,7 @@ class App extends Component {
           title={this.state.subject_Subject.title}
           sub={this.state.subject_Subject.sub}
         ></Subject>
-        <TOC data={this.data.contents}></TOC>
+        <TOC data={this.state.contents}></TOC>
         <Content
           title={this.state.subject_Content.title}
           desc={this.state.subject_Content.desc}
