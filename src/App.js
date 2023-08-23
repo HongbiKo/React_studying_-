@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       mode: "read",
+      selected_content_id: 2,
       welcome: { title: "Welcome", desc: "Hello, React!!" },
       subject_Subject: { title: "WEB", sub: "World Wide Web!" },
       contents: [
@@ -23,38 +24,36 @@ class App extends Component {
     };
   }
   render() {
-    console.log("App render");
     let _title,
       _desc = null;
     if (this.state.mode === "welcome") {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if (this.state.mode === "read") {
-      _title = this.state.contents[0].title;
-      _desc = this.state.contents[0].desc;
+      for (let i = 0; i < this.state.contents.length; i++) {
+        const data = this.state.contents[i];
+        if (data.id === this.state.selected_content_id) {
+          _title = data.title;
+          _desc = data.desc;
+          break;
+        }
+      }
     }
     return (
       <div className="App">
-        {/* <Subject
+        <Subject
           title={this.state.subject_Subject.title}
           sub={this.state.subject_Subject.sub}
-        ></Subject> */}
-        <header>
-          <h1>
-            <a
-              href="/"
-              onClick={function (e) {
-                console.log(e);
-                e.preventDefault();
-                this.setState({ mode: "welcome" });
-              }.bind(this)}
-            >
-              {this.state.subject_Subject.title}
-            </a>
-          </h1>
-          {this.state.subject_Subject.sub}
-        </header>
-        <TOC data={this.state.contents}></TOC>
+          onChangePage={function () {
+            this.setState({ mode: "welcome" });
+          }.bind(this)}
+        ></Subject>
+        <TOC
+          data={this.state.contents}
+          onChangePage={function (id) {
+            this.setState({ mode: "read", selected_content_id: Number(id) });
+          }.bind(this)}
+        ></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
