@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 
-class Subejct_practice extends Component {
+class Subject_practice extends Component {
   render() {
     return (
       <header>
-        <h1>{this.props.title}</h1>
+        <h1>
+          <a
+            href="/"
+            onClick={function (e) {
+              e.preventDefault();
+              this.props.onChangePage();
+            }.bind(this)}
+          >
+            {this.props.title}
+          </a>
+        </h1>
         {this.props.sub}
       </header>
     );
   }
 }
-export default Subejct_practice;
+export default Subject_practice;
