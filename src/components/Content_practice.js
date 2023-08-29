@@ -4,7 +4,7 @@ class Content_practice extends Component {
   render() {
     return (
       <article>
-        <h1>{this.props.title}</h1>
+        <h2>{this.props.title}</h2>
         {this.props.desc}
       </article>
     );

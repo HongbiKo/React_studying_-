@@ -2,20 +2,18 @@ import React, { Component } from "react";
 
 class TOC_practice extends Component {
   render() {
-    let lists = [];
+    let list = [];
     const data = this.props.data;
     for (let i = 0; i < data.length; i++) {
-      lists.push(
+      list.push(
         <li key={data[i].id}>
           <a
             href={"/content/" + data[i].id}
             data-id={data[i].id}
-            onClick={function (id, e) {
+            onClick={function (e) {
               e.preventDefault();
-
-              // this.props.onChangePage(e.target.dataset.id);
-              this.props.onChangePage(id);
-            }.bind(this, data[i].id)}
+              this.props.onChange(e.target.dataset.id);
+            }.bind(this)}
           >
             {data[i].title}
           </a>
@@ -24,7 +22,7 @@ class TOC_practice extends Component {
     }
     return (
       <nav>
-        <ul>{lists}</ul>
+        <ul>{list}</ul>
       </nav>
     );
   }

@@ -9,7 +9,7 @@ class Subject_practice extends Component {
             href="/"
             onClick={function (e) {
               e.preventDefault();
-              this.props.onChangePage();
+              this.props.onChange();
             }.bind(this)}
           >
             {this.props.title}
