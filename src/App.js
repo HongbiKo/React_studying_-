@@ -4,6 +4,7 @@ import Subject from "./components/Subject";
 import ReadContent from "./components/ReadContent";
 import CreateContent from "./components/CreateContent";
 import Control from "./components/Control";
+import UpdateContent from "./components/UpdateContent";
 import "./App.css";
 
 class App extends Component {
@@ -26,8 +27,17 @@ class App extends Component {
       },
     };
   }
-  render() {
-    //console.log("App render");
+
+  getReadContent() {
+    for (let i = 0; i < this.state.contents.length; i++) {
+      const data = this.state.contents[i];
+      if (data.id === this.state.selected_content_id) {
+        return data;
+      }
+    }
+  }
+
+  getContent() {
     let _title,
       _desc,
       _article = null;
@@ -36,14 +46,10 @@ class App extends Component {
       _desc = this.state.welcome.desc;
       _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === "read") {
-      for (let i = 0; i < this.state.contents.length; i++) {
-        const data = this.state.contents[i];
-        if (data.id === this.state.selected_content_id) {
-          _title = data.title;
-          _desc = data.desc;
-          _article = <ReadContent title={_title} desc={_desc}></ReadContent>;
-        }
-      }
+      const _content = this.getReadContent();
+      _article = (
+        <ReadContent title={_content.title} desc={_content.desc}></ReadContent>
+      );
     } else if (this.state.mode === "create") {
       _article = (
         <CreateContent
@@ -66,12 +72,35 @@ class App extends Component {
             });
             this.setState({
               contents: newContents,
+              mode: "read",
+              selected_content_id: this.max_content_id,
             });
-            console.log(_submit_title, _submit_desc);
           }.bind(this)}
         ></CreateContent>
       );
+    } else if (this.state.mode === "update") {
+      const _content = this.getReadContent();
+      _article = (
+        <UpdateContent
+          data={_content}
+          onFormSumbit={function (_id, _title, _desc) {
+            const _contents = Array.from(this.state.contents);
+            for (let i = 0; i < _contents.length; i++) {
+              if (_contents[i].id === _id) {
+                _contents[i] = { id: _id, title: _title, desc: _desc };
+                break;
+              }
+            }
+            this.setState({ contents: _contents, mode: "read" });
+          }.bind(this)}
+        ></UpdateContent>
+      );
     }
+    return _article;
+  }
+
+  render() {
+    console.log("App render");
     return (
       <div className="App">
         <Subject
@@ -92,7 +121,7 @@ class App extends Component {
             this.setState({ mode: _mode });
           }.bind(this)}
         ></Control>
-        {_article}
+        {this.getContent()}
       </div>
     );
   }
