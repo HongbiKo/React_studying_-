@@ -9,7 +9,7 @@ class Control_practice extends Component {
             href="/create"
             onClick={function (e) {
               e.preventDefault();
-              this.props.onChange("create");
+              this.props.onChangeMode("create");
             }.bind(this)}
           >
             create
@@ -20,7 +20,7 @@ class Control_practice extends Component {
             href="/update"
             onClick={function (e) {
               e.preventDefault();
-              this.props.onChange("update");
+              this.props.onChangeMode("update");
             }.bind(this)}
           >
             update
@@ -32,7 +32,7 @@ class Control_practice extends Component {
             value="delete"
             onClick={function (e) {
               e.preventDefault();
-              this.props.onChange("delete");
+              this.props.onChangeMode("delete");
             }.bind(this)}
           ></input>
         </li>
@@ -40,4 +40,5 @@ class Control_practice extends Component {
     );
   }
 }
+
 export default Control_practice;

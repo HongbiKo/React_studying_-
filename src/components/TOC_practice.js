@@ -2,21 +2,19 @@ import React, { Component } from "react";
 
 class TOC_practice extends Component {
   shouldComponentUpdate(newProps) {
-    console.log("TOC_shouldComponentUpdate render");
     if (this.props.data === newProps.data) {
       return false;
     }
     return true;
   }
   render() {
-    console.log("TOC_practice render");
     let list = [];
     const data = this.props.data;
     for (let i = 0; i < data.length; i++) {
       list.push(
         <li key={data[i].id}>
           <a
-            href={"/content" + data[i].id}
+            href={"/content/" + data[i].id}
             data-id={data[i].id}
             onClick={function (e) {
               e.preventDefault();
