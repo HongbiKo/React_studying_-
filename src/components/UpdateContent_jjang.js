@@ -8,10 +8,10 @@ class UpdateContent_jjang extends Component {
       title: this.props.data.title,
       desc: this.props.data.desc,
     };
-    this.inputFormHandler = this.inputFormHandler.bind(this);
+    this.onFormHandler = this.onFormHandler.bind(this);
   }
 
-  inputFormHandler(e) {
+  onFormHandler(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -20,25 +20,25 @@ class UpdateContent_jjang extends Component {
       <article>
         <h2>Update</h2>
         <form
-          action="/update_process"
-          method="posdt"
+          action="/update_procss"
+          method="post"
           onSubmit={function (e) {
             e.preventDefault();
-            this.props.onSubmit(
+            this.props.onFormSubmit(
               this.state.id,
               this.state.title,
               this.state.desc
             );
           }.bind(this)}
         >
-          <input type="hidden" name="id" value={this.state.id}></input>
+          <input type="hidden" value={this.state.id}></input>
           <p>
             <input
               type="text"
               name="title"
               placeholder="title"
               value={this.state.title}
-              onChange={this.inputFormHandler}
+              onChange={this.onFormHandler}
             ></input>
           </p>
           <p>
@@ -46,7 +46,7 @@ class UpdateContent_jjang extends Component {
               name="desc"
               placeholder="description"
               value={this.state.desc}
-              onChange={this.inputFormHandler}
+              onChange={this.onFormHandler}
             ></textarea>
           </p>
           <p>

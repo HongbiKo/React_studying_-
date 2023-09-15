@@ -14,22 +14,25 @@ class Jjang extends Component {
       mode: "normal",
       selected_list_id: 1,
       favorite: {
-        title: "What's her favorite?",
-        desc: "Her favortie is a meat!!",
+        title: "what is her favorite",
+        desc: "her favorite is a meat",
       },
-      subject: { title: "Jjang's world", sub: "Jjang is a really cute girl" },
+      subject: {
+        title: "let's see her feature",
+        sub: "explore her attraction",
+      },
       content: {
-        title: "Let's explore jjang's attraction",
-        desc: "Jjang's face is really beautiful",
+        title: "click the mode",
+        desc: "you can see more information",
       },
       list: [
+        { id: 1, title: "smile mode", desc: "her smile is really cute" },
+        { id: 2, title: "angry mode", desc: "her anger is really tough" },
         {
-          id: 1,
-          title: "smile mode",
-          desc: "Jjang wanna go to walk out now",
+          id: 3,
+          title: "gloomy mode",
+          desc: "her emotion is up and down now",
         },
-        { id: 2, title: "angry mode", desc: "Jjang wanna bark loudly" },
-        { id: 3, title: "gloomy mode", desc: "Jjang wanna sleep now" },
       ],
     };
   }
@@ -61,15 +64,15 @@ class Jjang extends Component {
           desc={_content.desc}
         ></ReadContent_jjang>
       );
-    } else if (this.state.mode == "create") {
+    } else if (this.state.mode === "create") {
       _article = (
         <CreateContent_jjang
-          onSubmit={function (_submit_title, _submit_desc) {
+          onFormSubmit={function (_title, _desc) {
             this.max_list_id = this.max_list_id + 1;
             const _list = this.state.list.concat({
               id: this.max_list_id,
-              title: _submit_title,
-              desc: _submit_desc,
+              title: _title,
+              desc: _desc,
             });
             this.setState({
               list: _list,
@@ -84,7 +87,7 @@ class Jjang extends Component {
       _article = (
         <UpdateContent_jjang
           data={_content}
-          onSubmit={function (_id, _title, _desc) {
+          onFormSubmit={function (_id, _title, _desc) {
             const _list = Array.from(this.state.list);
             for (let i = 0; i < _list.length; i++) {
               if (_list[i].id === _id) {
@@ -92,7 +95,10 @@ class Jjang extends Component {
                 break;
               }
             }
-            this.setState({ list: _list, mode: "normal" });
+            this.setState({
+              list: _list,
+              mode: "normal",
+            });
           }.bind(this)}
         ></UpdateContent_jjang>
       );
@@ -113,10 +119,7 @@ class Jjang extends Component {
         <List_jjang
           data={this.state.list}
           onChangePage={function (id) {
-            this.setState({
-              mode: "normal",
-              selected_list_id: Number(id),
-            });
+            this.setState({ mode: "normal", selected_list_id: Number(id) });
           }.bind(this)}
         ></List_jjang>
         <Control_jjang
@@ -133,7 +136,9 @@ class Jjang extends Component {
                 this.setState({ list: _list, mode: "favorite" });
               }
             } else {
-              this.setState({ mode: _mode });
+              this.setState({
+                mode: _mode,
+              });
             }
           }.bind(this)}
         ></Control_jjang>

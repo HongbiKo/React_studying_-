@@ -4,7 +4,6 @@ import "./App2.css";
 function App2() {
   return (
     <div className="container">
-      <h1>Hello World</h1>
       <FuncComp initNumber={2}></FuncComp>
       <ClassComp initNumber={2}></ClassComp>
     </div>
@@ -12,19 +11,13 @@ function App2() {
 }
 
 function FuncComp(props) {
-  const numberState = useState(props.initNumber);
-  const number = numberState[0];
-  const setNumber = numberState[1];
-
-  const dateState = useState(new Date().toString());
-  const _date = dateState[0];
-  const setDate = dateState[1];
-
+  const [number, setNumber] = useState(props.initNumber);
+  const [date, setDate] = useState(new Date().toString());
   return (
     <div className="container">
-      <h2>function style component</h2>
+      <h1>Function style Component</h1>
       <p>Number: {number}</p>
-      <p>Date: {_date}</p>
+      <p>Date: {date}</p>
       <input
         type="button"
         value="random"
@@ -51,7 +44,7 @@ class ClassComp extends React.Component {
   render() {
     return (
       <div className="container">
-        <h2>class style component</h2>
+        <h1>Class style Component</h1>
         <p>Number: {this.state.number}</p>
         <p>Date: {this.state.date}</p>
         <input
