@@ -7,14 +7,15 @@ import { BrowserRouter } from "react-router-dom";
 // import Practice from "./Practice";
 // import Jjang from "./Jjang";
 // import UseEffectTest from "./UseEffectTest";
-import ReactRouter from "./ReactRouter";
+// import ReactRouter from "./ReactRouter";
+import Shoppingmall from "./Shoppingmall";
 
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <ReactRouter />
+    <Shoppingmall />
   </BrowserRouter>
 );
 
