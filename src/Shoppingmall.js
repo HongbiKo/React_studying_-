@@ -25,7 +25,10 @@ function Shoppingmall() {
         <Route path="about" element={<About_shoppingmall />}>
           <Route path="location" element={<Location />}></Route>
         </Route>
-        <Route path="products/*" element={<Products_shoppingmall />}></Route>
+        <Route
+          path="/products/:product_id"
+          element={<Products_shoppingmall />}
+        ></Route>
       </Routes>
     </div>
   );
