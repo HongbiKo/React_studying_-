@@ -3,7 +3,7 @@ import { Routes, Route, useParams, Link } from "react-router-dom";
 
 function Products_shoppingmall() {
   let params = useParams();
-  console.log(params);
+  // console.log(params);
 
   return (
     <div>
@@ -25,7 +25,7 @@ function Products_shoppingmall() {
 function Product() {
   let params = useParams();
   const product_id = params.product_id;
-  console.log(product_id);
+  // console.log(product_id);
   return <div>{product_id}번 상품</div>;
 }
 
