@@ -8,14 +8,15 @@ import { BrowserRouter } from "react-router-dom";
 // import Jjang from "./Jjang";
 // import UseEffectTest from "./UseEffectTest";
 // import ReactRouter from "./ReactRouter";
-import Shoppingmall from "./Shoppingmall";
+// import Shoppingmall from "./Shoppingmall";
+import ReactAjax from "./ReactAjax";
 
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Shoppingmall />
+    <ReactAjax />
   </BrowserRouter>
 );
 
