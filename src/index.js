@@ -9,14 +9,15 @@ import { BrowserRouter } from "react-router-dom";
 // import UseEffectTest from "./UseEffectTest";
 // import ReactRouter from "./ReactRouter";
 // import Shoppingmall from "./Shoppingmall";
-import ReactAjax from "./ReactAjax";
+// import ReactAjax from "./ReactAjax";
+import ComponentwithoutRedux from "./ComponentwithoutRedux";
 
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <ReactAjax />
+    <ComponentwithoutRedux />
   </BrowserRouter>
 );
 
