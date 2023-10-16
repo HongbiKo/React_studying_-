@@ -1,70 +1,27 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createStore } from "redux";
+import { BrowserRouter } from "react-router-dom";
+// import App from "./App";
+// import App2 from "./App2";
+// import Practice from "./Practice";
+// import Jjang from "./Jjang";
+// import UseEffectTest from "./UseEffectTest";
+// import ReactRouter from "./ReactRouter";
+// import Shoppingmall from "./Shoppingmall";
+// import ReactAjax from "./ReactAjax";
+import ComponentwithoutRedux from "./ComponentwithoutRedux";
 
-const divToggle = document.querySelector(".toggle");
-const counter = document.querySelector("h1");
-const btnIncrease = document.querySelector("#increase");
-const btnDecrease = document.querySelector("#decrease");
+import reportWebVitals from "./reportWebVitals";
 
-const TOGGLE_SWITCH = "TOGGLE_SWITCH";
-const INCREASE = "INCREASE";
-const DECREASE = "DECREASE";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <BrowserRouter>
+    <ComponentwithoutRedux />
+  </BrowserRouter>
+);
 
-const toggleSwitch = () => ({ type: TOGGLE_SWITCH });
-const increase = (difference) => ({ type: INCREASE, difference });
-const decrease = () => ({ type: DECREASE });
-
-const initialState = {
-  toggle: false,
-  counter: 0,
-};
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case TOGGLE_SWITCH:
-      return {
-        ...state,
-        toggle: !state.toggle,
-      };
-    case INCREASE:
-      return {
-        ...state,
-        counter: state.counter + action.difference,
-      };
-    case DECREASE:
-      return {
-        ...state,
-        counter: state.counter - 1,
-      };
-    default:
-      return state;
-  }
-}
-
-const store = createStore(reducer);
-
-divToggle.addEventListener("click", function () {
-  store.dispatch(toggleSwitch());
-});
-
-btnIncrease.addEventListener("click", function () {
-  store.dispatch(increase(1));
-});
-
-btnDecrease.addEventListener("click", function () {
-  store.dispatch(decrease());
-});
-
-const render = () => {
-  const state = store.getState();
-
-  if (state.toggle) {
-    divToggle.classList.add("active");
-  } else {
-    divToggle.classList.remove("active");
-  }
-
-  counter.innerText = state.counter;
-};
-
-store.subscribe(render);
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

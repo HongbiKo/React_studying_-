@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import store from "../components/store";
 
 class AddNumber extends Component {
   state = {
@@ -12,7 +13,7 @@ class AddNumber extends Component {
           type="button"
           value="+"
           onClick={function () {
-            this.props.onClick(this.state.size);
+            store.dispatch({ type: "INCREMENT", size: this.state.size });
           }.bind(this)}
         ></input>
         <input
