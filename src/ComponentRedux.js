@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import "./ComponentwithoutRedux.css";
+import "./ComponentRedux.css";
 import AddNumberRoot from "./components/AddNumberRoot";
 import DisplayNumberRoot from "./components/DisplayNumberRoot";
 
-class ComponentwithoutRedux extends Component {
-  state = {
-    number: 10,
-  };
+class ComponentRedux extends Component {
   render() {
     return (
-      <div className="ComponentwihtoutRedux">
+      <div className="ComponentRedux">
         <h1>Root</h1>
         <AddNumberRoot></AddNumberRoot>
         <DisplayNumberRoot></DisplayNumberRoot>
@@ -18,4 +15,4 @@ class ComponentwithoutRedux extends Component {
   }
 }
 
-export default ComponentwithoutRedux;
+export default ComponentRedux;
