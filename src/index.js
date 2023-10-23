@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+// import "./index.css";
 // import { BrowserRouter } from "react-router-dom";
 // import App from "./App";
 // import App2 from "./App2";
@@ -10,16 +10,19 @@ import "./index.css";
 // import ReactRouter from "./ReactRouter";
 // import Shoppingmall from "./Shoppingmall";
 // import ReactAjax from "./ReactAjax";
-import ComponentRedux from "./ComponentRedux";
+// import ComponentRedux from "./ComponentRedux";
+
+import TodoList from "./components/TodoList";
 import { Provider } from "react-redux";
-import store from "./components/store";
+// import store from "./components/store";
+import toDosStore from "./components/store_TodoList";
 
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <ComponentRedux />
+  <Provider store={toDosStore}>
+    <TodoList />
   </Provider>
 );
 
