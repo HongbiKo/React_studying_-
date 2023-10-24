@@ -24,7 +24,7 @@ const deleteToDo = (id) => {
 const reducer = (toDos = [], action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [{ text: action.text, id: uuidv4() }, ...toDos];
+      return [...toDos, { text: action.text, id: uuidv4() }];
     case DELETE_TODO:
       return toDos.filter((toDo) => toDo.id !== action.id);
     default:

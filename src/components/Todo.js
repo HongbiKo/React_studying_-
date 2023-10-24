@@ -5,7 +5,7 @@ import { actionCreators } from "../components/store_TodoList";
 
 function ToDo({ text, deleteToDo, id }) {
   return (
-    <>
+    <div>
       <li>
         <Link to={`/${id}`}>{text}</Link>
         <button onClick={deleteToDo}>
@@ -14,7 +14,7 @@ function ToDo({ text, deleteToDo, id }) {
           </span>
         </button>
       </li>
-    </>
+    </div>
   );
 }
 
