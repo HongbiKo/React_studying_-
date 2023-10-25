@@ -11,18 +11,23 @@ import ReactDOM from "react-dom/client";
 // import Shoppingmall from "./Shoppingmall";
 // import ReactAjax from "./ReactAjax";
 // import ComponentRedux from "./ComponentRedux";
+//import TodoList from "./components/TodoList";
 
-import TodoList from "./components/TodoList";
-import { Provider } from "react-redux";
+import Counter from "./Counter";
+
+/* Store */
+
 // import store from "./components/store";
-import toDosStore from "./components/store_TodoList";
+// import toDosStore from "./components/store_TodoList";
+import store from "./store/store";
 
+import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={toDosStore}>
-    <TodoList />
+  <Provider store={store}>
+    <Counter />
   </Provider>
 );
 
